@@ -1,4 +1,4 @@
-package br.com.alura.forumhub.resposta;
+package br.com.alura.forumhub.domain.resposta;
 
 public record DadosCadastroResposta (
         String mensagem,

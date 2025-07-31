@@ -1,4 +1,4 @@
-package br.com.alura.forumhub.resposta;
+package br.com.alura.forumhub.domain.resposta;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

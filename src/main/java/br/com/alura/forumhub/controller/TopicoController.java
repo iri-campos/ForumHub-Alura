@@ -1,10 +1,10 @@
 package br.com.alura.forumhub.controller;
 
-import br.com.alura.forumhub.curso.Curso;
-import br.com.alura.forumhub.curso.CursoRepository;
-import br.com.alura.forumhub.topico.*;
-import br.com.alura.forumhub.usuario.Usuario;
-import br.com.alura.forumhub.usuario.UsuarioRepository;
+import br.com.alura.forumhub.domain.curso.Curso;
+import br.com.alura.forumhub.domain.curso.CursoRepository;
+import br.com.alura.forumhub.domain.topico.*;
+import br.com.alura.forumhub.domain.autor.Autor;
+import br.com.alura.forumhub.domain.autor.AutorRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class TopicoController {
     private TopicoRepository topicoRepository;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private AutorRepository usuarioRepository;
 
     @Autowired
     private CursoRepository cursoRepository;
@@ -38,7 +37,7 @@ public class TopicoController {
         }
 
         //Verifica existência de autor
-        Usuario autor = usuarioRepository.findById(dados.idAutor())
+        Autor autor = usuarioRepository.findById(dados.idAutor())
                 .orElseThrow(() -> new EntityNotFoundException("Autor com ID " + dados.idAutor() + " não encontrado."));
 
         //Verifica existência de curso

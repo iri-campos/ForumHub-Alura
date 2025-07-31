@@ -1,9 +1,9 @@
 package br.com.alura.forumhub.controller;
 
-import br.com.alura.forumhub.curso.Curso;
-import br.com.alura.forumhub.curso.CursoRepository;
-import br.com.alura.forumhub.curso.DadosCadastroCurso;
-import br.com.alura.forumhub.curso.DadosDetalhamentoCurso;
+import br.com.alura.forumhub.domain.curso.Curso;
+import br.com.alura.forumhub.domain.curso.CursoRepository;
+import br.com.alura.forumhub.domain.curso.DadosCadastroCurso;
+import br.com.alura.forumhub.domain.curso.DadosDetalhamentoCurso;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

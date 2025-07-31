@@ -1,4 +1,4 @@
-package br.com.alura.forumhub.usuario;
+package br.com.alura.forumhub.domain.autor;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Usuario {
+public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Usuario {
 
     private String email;
 
-    public Usuario(DadosCadastroUsuario dados) {
+    public Autor(DadosCadastroAutor dados) {
         this.nome = dados.nome();
         this.email = dados.email();
     }

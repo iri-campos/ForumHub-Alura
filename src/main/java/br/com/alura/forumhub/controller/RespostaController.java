@@ -1,13 +1,13 @@
 package br.com.alura.forumhub.controller;
 
-import br.com.alura.forumhub.resposta.DadosCadastroResposta;
-import br.com.alura.forumhub.resposta.DadosDetalhamentoResposta;
-import br.com.alura.forumhub.resposta.Resposta;
-import br.com.alura.forumhub.resposta.RespostaRepository;
-import br.com.alura.forumhub.topico.Topico;
-import br.com.alura.forumhub.topico.TopicoRepository;
-import br.com.alura.forumhub.usuario.Usuario;
-import br.com.alura.forumhub.usuario.UsuarioRepository;
+import br.com.alura.forumhub.domain.resposta.DadosCadastroResposta;
+import br.com.alura.forumhub.domain.resposta.DadosDetalhamentoResposta;
+import br.com.alura.forumhub.domain.resposta.Resposta;
+import br.com.alura.forumhub.domain.resposta.RespostaRepository;
+import br.com.alura.forumhub.domain.topico.Topico;
+import br.com.alura.forumhub.domain.topico.TopicoRepository;
+import br.com.alura.forumhub.domain.autor.Autor;
+import br.com.alura.forumhub.domain.autor.AutorRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class RespostaController {
     private RespostaRepository respostaRepository;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private AutorRepository usuarioRepository;
 
     @Autowired
     private TopicoRepository topicoRepository;
@@ -30,7 +30,7 @@ public class RespostaController {
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody @Valid DadosCadastroResposta dados) {
-        Usuario autor = usuarioRepository.findById(dados.idAutor())
+        Autor autor = usuarioRepository.findById(dados.idAutor())
                 .orElseThrow(() -> new RuntimeException("Autor não encontrado"));
 
         Topico topico = topicoRepository.findById(dados.idTopico())

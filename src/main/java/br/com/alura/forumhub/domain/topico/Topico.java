@@ -1,7 +1,7 @@
-package br.com.alura.forumhub.topico;
+package br.com.alura.forumhub.domain.topico;
 
-import br.com.alura.forumhub.curso.Curso;
-import br.com.alura.forumhub.usuario.Usuario;
+import br.com.alura.forumhub.domain.curso.Curso;
+import br.com.alura.forumhub.domain.autor.Autor;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -29,14 +29,14 @@ public class Topico {
     private StatusTopico status = StatusTopico.PENDENTE;
 
     @ManyToOne
-    private Usuario autor;
+    private Autor autor;
 
     @ManyToOne
     private Curso curso;
 
     private Boolean ativo = true;
 
-    public Topico(@NotBlank String titulo, @NotBlank String mensagem, Usuario autor, Curso curso) {
+    public Topico(@NotBlank String titulo, @NotBlank String mensagem, Autor autor, Curso curso) {
         this.titulo = titulo;
         this.mensagem = mensagem;
         this.autor = autor;

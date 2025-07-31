@@ -1,7 +1,7 @@
-package br.com.alura.forumhub.resposta;
+package br.com.alura.forumhub.domain.resposta;
 
-import br.com.alura.forumhub.topico.Topico;
-import br.com.alura.forumhub.usuario.Usuario;
+import br.com.alura.forumhub.domain.topico.Topico;
+import br.com.alura.forumhub.domain.autor.Autor;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,12 +25,12 @@ public class Resposta {
     private LocalDateTime dataCriacao = LocalDateTime.now();
 
     @ManyToOne
-    private Usuario autor;
+    private Autor autor;
 
     @ManyToOne
     private Topico topico;
 
-    public Resposta(String mensagem, Boolean solucao, Usuario autor, Topico topico) {
+    public Resposta(String mensagem, Boolean solucao, Autor autor, Topico topico) {
         this.mensagem = mensagem;
         this.solucao = solucao;
         this.autor = autor;
